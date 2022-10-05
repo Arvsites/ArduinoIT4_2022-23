@@ -1,0 +1,38 @@
+#define a 4
+#define btn1 10
+
+void setup() {
+  pinMode(a, OUTPUT);
+  pinMode(btn1, INPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  Serial.println(digitalRead(btn1));
+  
+  for (int i = 1000; i > 0; i = i - 10) {
+    if (digitalRead(btn1) == 1) {
+      blink1(a, i);
+    }
+    else{
+      while (true) {
+        btn(a);
+      }
+      
+    }
+  }
+}
+
+void blink1(int pinLed, int time1) {
+  digitalWrite(pinLed, 1);
+  delay(time1);
+  digitalWrite(pinLed, 0);
+  delay(time1);
+}
+
+void btn(int pinLed) {
+  digitalWrite(pinLed, 1);
+  delay(20);
+  digitalWrite(pinLed, 0);
+  delay(20);
+}
